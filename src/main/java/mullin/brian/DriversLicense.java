@@ -1,5 +1,7 @@
 package mullin.brian;
 
+import java.util.ArrayList;
+
 /**
  * Created by brianmullin on 5/20/17.
  */
@@ -16,13 +18,13 @@ public class DriversLicense {
     private String sex;
     private String eyeColor;
     private String height;
-    private String organHeight;
+    private String organDonor;
     private String licenseClass;
 
     public DriversLicense(String lastName, String firstName, String streetAddress,
                           String state, String licenseNumber, String dateOfBirth,
                           String issueDate, String expirationDate, String sex,
-                          String eyeColor, String height, String organHeight, String licenseClass) {
+                          String eyeColor, String height, String organDonor, String licenseClass) {
 
         this.lastName = lastName;
         this.firstName = firstName;
@@ -35,7 +37,7 @@ public class DriversLicense {
         this.sex = sex;
         this.eyeColor = eyeColor;
         this.height = height;
-        this.organHeight = organHeight;
+        this.organDonor = organDonor;
         this.licenseClass = licenseClass;
     }
 
@@ -83,8 +85,8 @@ public class DriversLicense {
         return height;
     }
 
-    public String getOrganHeight() {
-        return organHeight;
+    public String getOrganDonor() {
+        return organDonor;
     }
 
     public String getLicenseClass() {
@@ -95,8 +97,49 @@ public class DriversLicense {
         return "LAST_NAME,FIRST_NAME,ADDR,STATE,LICENSE_NUMBER,D.O.B.,ISS_D,EXP_D,SEX,EYES,HGT,ORGANDONOR,CLASS\n";
     }
 
-    public String serializeToCSV(){
-        return "";
+    public static String serializeToCSV(ArrayList<DriversLicense> list){
+
+        StringBuilder result = new StringBuilder(1000);
+        result.append(getCSVHeader());
+        DriversLicense currentLicense;
+        for (int i = 0; i < list.size(); i++){
+           currentLicense = list.get(i);
+           result.append(currentLicense.serializeThis());
+        }
+
+        return result.toString();
+    }
+
+    public String serializeThis(){
+
+        StringBuilder result = new StringBuilder(1000);
+        result.append(getLastName());
+        result.append(",");
+        result.append(getFirstName());
+        result.append(",");
+        result.append(getStreetAddress());
+        result.append(",");
+        result.append(getState());
+        result.append(",");
+        result.append(getLicenseNumber());
+        result.append(",");
+        result.append(getDateOfBirth());
+        result.append(",");
+        result.append(getIssueDate());
+        result.append(",");
+        result.append(getExpirationDate());
+        result.append(",");
+        result.append(getSex());
+        result.append(",");
+        result.append(getEyeColor());
+        result.append(",");
+        result.append(getHeight());
+        result.append(",");
+        result.append(getOrganDonor());
+        result.append(",");
+        result.append(getLicenseClass());
+        result.append("\n");
+        return result.toString();
     }
 
 }
