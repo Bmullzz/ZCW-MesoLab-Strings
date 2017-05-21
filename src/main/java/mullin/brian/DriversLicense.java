@@ -1,7 +1,9 @@
+package mullin.brian;
+
 /**
  * Created by brianmullin on 5/20/17.
  */
-public class DriverLicense {
+public class DriversLicense {
 
     private String lastName;
     private String firstName;
@@ -17,10 +19,10 @@ public class DriverLicense {
     private String organHeight;
     private String licenseClass;
 
-    public DriverLicense(String lastName, String firstName, String streetAddress,
-                         String state, String licenseNumber, String dateOfBirth,
-                         String issueDate, String expirationDate, String sex,
-                         String eyeColor, String height, String organHeight, String licenseClass) {
+    public DriversLicense(String lastName, String firstName, String streetAddress,
+                          String state, String licenseNumber, String dateOfBirth,
+                          String issueDate, String expirationDate, String sex,
+                          String eyeColor, String height, String organHeight, String licenseClass) {
 
         this.lastName = lastName;
         this.firstName = firstName;
@@ -88,4 +90,13 @@ public class DriverLicense {
     public String getLicenseClass() {
         return licenseClass;
     }
+
+    public static String getCSVHeader(){
+        return "LAST_NAME,FIRST_NAME,ADDR,STATE,LICENSE_NUMBER,D.O.B.,ISS_D,EXP_D,SEX,EYES,HGT,ORGANDONOR,CLASS\n";
+    }
+
+    public String serializeToCSV(){
+        return "";
+    }
+
 }
